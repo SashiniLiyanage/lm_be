@@ -1,5 +1,6 @@
 import ballerina/http;
 import ballerinax/mysql;
+import ballerinax/mysql.driver as _;
 // import ballerina/io;
 
 configurable string DBhost = ?;
