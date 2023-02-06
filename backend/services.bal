@@ -1,12 +1,12 @@
 import ballerina/http;
-// import ballerinax/mysql;
+import ballerinax/mysql;
 // import ballerina/io;
 
-// configurable string DBhost = ?;
-// configurable string DBuser = ?;
-// configurable string DBpassword = ?;
-// configurable string DBname = ?;
-// configurable int DBport = ?;
+configurable string DBhost = ?;
+configurable string DBuser = ?;
+configurable string DBpassword = ?;
+configurable string DBname = ?;
+configurable int DBport = ?;
 
 // configurable string DESTINATION_PATH = ?;
 // configurable string LICENSEHEADER_PATH = ?;
@@ -31,13 +31,13 @@ type BadRequest record {|
 |};
 
 
-// final mysql:Client mysqlEp= check new (
-//     DBhost, 
-//     DBuser, 
-//     DBpassword, 
-//     DBname, 
-//     DBport
-// );
+final mysql:Client mysqlEp= check new (
+    DBhost, 
+    DBuser, 
+    DBpassword, 
+    DBname, 
+    DBport
+);
 
 service /LicenseManager on new http:Listener(9096) {
 
