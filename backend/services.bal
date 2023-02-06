@@ -1,12 +1,12 @@
 import ballerina/http;
-import ballerinax/mysql;
+// import ballerinax/mysql;
 // import ballerina/io;
 
-configurable string DBhost = ?;
-configurable string DBuser = ?;
-configurable string DBpassword = ?;
-configurable string DBname = ?;
-configurable int DBport = ?;
+// configurable string DBhost = ?;
+// configurable string DBuser = ?;
+// configurable string DBpassword = ?;
+// configurable string DBname = ?;
+// configurable int DBport = ?;
 
 // configurable string DESTINATION_PATH = ?;
 // configurable string LICENSEHEADER_PATH = ?;
@@ -31,29 +31,32 @@ type BadRequest record {|
 |};
 
 
-final mysql:Client mysqlEp= check new (
-    DBhost, 
-    DBuser, 
-    DBpassword, 
-    DBname, 
-    DBport
-);
+// final mysql:Client mysqlEp= check new (
+//     DBhost, 
+//     DBuser, 
+//     DBpassword, 
+//     DBname, 
+//     DBport
+// );
 
 service /LicenseManager on new http:Listener(9096) {
 
     resource function get getLicense() returns Success|InternalServerError|error {
 
-        json|error returnedResponse = getAllLicense();
+        // json|error returnedResponse = getAllLicense();
+        json returnedResponse = {name: "jhon"};
         
-        if returnedResponse is json {
+        // if returnedResponse is json {
+        //     Success res = {body: returnedResponse};
+        //     return res;
+        // }
+
+        // InternalServerError res ={ body: "Server Error"};
+        // return res;
             Success res = {body: returnedResponse};
             return res;
         }
-
-        InternalServerError res ={ body: "Server Error"};
-        return res;
     
-    }
 
     // resource function post updateLicense(@http:Payload json payload) returns Success|BadRequest|InternalServerError|error {
 
