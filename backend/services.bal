@@ -56,95 +56,95 @@ service /LicenseManager on new http:Listener(9096) {
         }
     
 
-    // resource function post updateLicense(@http:Payload json payload) returns Success|BadRequest|InternalServerError|error {
+    resource function post updateLicense(@http:Payload json payload) returns Success|BadRequest|InternalServerError|error {
 
-    //     json|error licName = payload.licName;
-    //     json|error licUrl = payload.licUrl;
-    //     json|error licId = payload.licId;
-    //     json|error licKey = payload.licKey;
-    //     json|error licCategory = payload.licCategory;
+        json|error licName = payload.licName;
+        json|error licUrl = payload.licUrl;
+        json|error licId = payload.licId;
+        json|error licKey = payload.licKey;
+        json|error licCategory = payload.licCategory;
         
-    //     if(licName is string && licUrl is string && licKey is string && licCategory is string && licId is int){
+        if(licName is string && licUrl is string && licKey is string && licCategory is string && licId is int){
 
-    //         boolean success = updateLicense(licName,licKey,licUrl,licCategory, licId);
+            boolean success = updateLicense(licName,licKey,licUrl,licCategory, licId);
 
-    //         if(success){
-    //             Success res = {body: "success"};
-    //             return res;
-    //         }
+            if(success){
+                Success res = {body: "success"};
+                return res;
+            }
 
-    //         InternalServerError res ={ body:"Server Error"};
-    //         return res;
+            InternalServerError res ={ body:"Server Error"};
+            return res;
 
-    //     }else{
-    //         BadRequest res ={ body:"Incorrect payload format"};
-    //         return res;
-    //     }
+        }else{
+            BadRequest res ={ body:"Incorrect payload format"};
+            return res;
+        }
     
-    // }
+    }
 
-    // resource function post addLicense(@http:Payload json payload) returns Success|BadRequest|InternalServerError|error {
+    resource function post addLicense(@http:Payload json payload) returns Success|BadRequest|InternalServerError|error {
 
-    //         json|error licName = payload.licName;
-    //         json|error licUrl = payload.licUrl;
-    //         json|error licKey = payload.licKey;
-    //         json|error licCategory = payload.licCategory;
+            json|error licName = payload.licName;
+            json|error licUrl = payload.licUrl;
+            json|error licKey = payload.licKey;
+            json|error licCategory = payload.licCategory;
             
-    //         if(licName is string && licUrl is string && licKey is string && licCategory is string){
+            if(licName is string && licUrl is string && licKey is string && licCategory is string){
 
-    //             boolean success = addNewLicense(licName,licKey,licUrl,licCategory);
+                boolean success = addNewLicense(licName,licKey,licUrl,licCategory);
 
-    //             if(success){
-    //                 Success res = {body: "Success"};
-    //                 return res;
-    //             }
+                if(success){
+                    Success res = {body: "Success"};
+                    return res;
+                }
 
-    //             InternalServerError res ={ body:"Server Error"};
-    //             return res;
+                InternalServerError res ={ body:"Server Error"};
+                return res;
 
-    //         }else{
-    //             BadRequest res ={ body:"Incorrect payload format"};
-    //             return res;   
-    //         }    
-    // }
+            }else{
+                BadRequest res ={ body:"Incorrect payload format"};
+                return res;   
+            }    
+    }
 
 
-    // resource function get getLibrary() returns Success|InternalServerError|error {
+    resource function get getLibrary() returns Success|InternalServerError|error {
 
-    //     json| error? returnedResponse = getAllLibraries();
+        json| error? returnedResponse = getAllLibraries();
         
-    //     if returnedResponse is json{
-    //         Success res = {body: returnedResponse};
-    //         return res;
-    //     }else{
-    //         InternalServerError res ={ body: "Server Error"};
-    //         return res;
-    //     }
-    // }
+        if returnedResponse is json{
+            Success res = {body: returnedResponse};
+            return res;
+        }else{
+            InternalServerError res ={ body: "Server Error"};
+            return res;
+        }
+    }
 
-    // resource function post updateLibrary(@http:Payload json payload) returns Success|InternalServerError|BadRequest|error {
+    resource function post updateLibrary(@http:Payload json payload) returns Success|InternalServerError|BadRequest|error {
 
-    //         json|error licenses = payload.ids;
-    //         json|error libId = payload.libId;
+            json|error licenses = payload.ids;
+            json|error libId = payload.libId;
             
-    //         if(libId is int && licenses is json[]){
-    //             boolean success = updateLibrary(licenses,libId);
+            if(libId is int && licenses is json[]){
+                boolean success = updateLibrary(licenses,libId);
 
-    //             if(success){
-    //                 Success res ={ body: "Success"};
-    //                 return res; 
-    //             }
+                if(success){
+                    Success res ={ body: "Success"};
+                    return res; 
+                }
 
-    //             InternalServerError res ={ body: ()};
-    //             return res;
+                InternalServerError res ={ body: ()};
+                return res;
 
-    //         }else{
-    //             BadRequest res ={ body: "Incorrect payload format"};
-    //             return res;   
-    //         }
+            }else{
+                BadRequest res ={ body: "Incorrect payload format"};
+                return res;   
+            }
 
        
-    // }
+    }
 
 
     // resource function post addLibrary(@http:Payload json payload) returns Success|BadRequest|InternalServerError|error {

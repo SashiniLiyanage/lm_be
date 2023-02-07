@@ -1,10 +1,9 @@
 import ballerinax/mysql.driver as _;
 import ballerina/sql;
 // import ballerina/jballerina.java;
-// import ballerina/log;
+import ballerina/log;
 // import ballerina/file;
 // import ballerina/io;
-// import ballerina/log;
 
 public type License record {|
     int LIC_ID;
@@ -88,77 +87,77 @@ public isolated function getAllLicense() returns json|error {
 }
 
 
-// public isolated function addNewLicense(string licName, string licKey, string licUrl,string licCategory) returns boolean {
+public isolated function addNewLicense(string licName, string licKey, string licUrl,string licCategory) returns boolean {
 
-//     sql:ParameterizedQuery query = `INSERT INTO LM_LICENSE (LIC_NAME,LIC_KEY,LIC_URL, LIC_CATEGORY) VALUES (${licName},${licKey},${licUrl},${licCategory})`;
+    sql:ParameterizedQuery query = `INSERT INTO LM_LICENSE (LIC_NAME,LIC_KEY,LIC_URL, LIC_CATEGORY) VALUES (${licName},${licKey},${licUrl},${licCategory})`;
     
-//     sql:ExecutionResult|sql:Error executionResult = mysqlEp->execute(sqlQuery = query);
+    sql:ExecutionResult|sql:Error executionResult = mysqlEp->execute(sqlQuery = query);
 
-//     if(executionResult is sql:ExecutionResult){
-//         return true;
-//     }else{
-//         log:printError("Error in inserting license", executionResult);
-//         return false;
-//     }
+    if(executionResult is sql:ExecutionResult){
+        return true;
+    }else{
+        log:printError("Error in inserting license", executionResult);
+        return false;
+    }
 
    
-// }
+}
 
-// public isolated  function getAllLibraries() returns json| error?{
+public isolated  function getAllLibraries() returns json| error?{
 
-//     AllLibrary[] all_library_list = [];
+    AllLibrary[] all_library_list = [];
 
-//     sql:ParameterizedQuery query = `SELECT LIB_ID,LIB_FILENAME,LIB_TYPE,LIC_KEY FROM LM_LIBRARY_LICENSE INNER JOIN LM_LICENSE USING (LIC_ID) INNER JOIN LM_LIBRARY USING (LIB_ID) ORDER BY LIB_ID`;
+    sql:ParameterizedQuery query = `SELECT LIB_ID,LIB_FILENAME,LIB_TYPE,LIC_KEY FROM LM_LIBRARY_LICENSE INNER JOIN LM_LICENSE USING (LIC_ID) INNER JOIN LM_LIBRARY USING (LIB_ID) ORDER BY LIB_ID`;
 
-//     stream<AllLibrary, error?> queryResponse = mysqlEp->query(query);
+    stream<AllLibrary, error?> queryResponse = mysqlEp->query(query);
 
-//     check from AllLibrary item in queryResponse
-//         do {all_library_list.push(item);};
-//     check queryResponse.close();
+    check from AllLibrary item in queryResponse
+        do {all_library_list.push(item);};
+    check queryResponse.close();
 
-//     return all_library_list.toJson();
-// }
+    return all_library_list.toJson();
+}
 
 
-// public isolated function updateLicense(string licName, string licKey, string licUrl, string licCategory, int licId) returns boolean {
+public isolated function updateLicense(string licName, string licKey, string licUrl, string licCategory, int licId) returns boolean {
     
-//     sql:ParameterizedQuery query = `UPDATE LM_LICENSE SET LIC_NAME=${licName}, LIC_KEY=${licKey}, LIC_URL=${licUrl}, LIC_CATEGORY=${licCategory} WHERE LIC_ID=${licId}`;
+    sql:ParameterizedQuery query = `UPDATE LM_LICENSE SET LIC_NAME=${licName}, LIC_KEY=${licKey}, LIC_URL=${licUrl}, LIC_CATEGORY=${licCategory} WHERE LIC_ID=${licId}`;
     
-//     sql:ExecutionResult|sql:Error executionResult = mysqlEp->execute(sqlQuery = query);
+    sql:ExecutionResult|sql:Error executionResult = mysqlEp->execute(sqlQuery = query);
 
-//     if(executionResult is sql:ExecutionResult){
-//         return true;
-//     }else{
-//         log:printError("Error in updating licenses", executionResult);
-//         return false;
-//     }
-// }
+    if(executionResult is sql:ExecutionResult){
+        return true;
+    }else{
+        log:printError("Error in updating licenses", executionResult);
+        return false;
+    }
+}
 
 
 
-// public isolated function updateLibrary(json[] licenses, int libId) returns boolean {
+public isolated function updateLibrary(json[] licenses, int libId) returns boolean {
 
-//     boolean success = deleteLibraryLicense(libId);
+    boolean success = deleteLibraryLicense(libId);
 
-//     if(success){
-//         foreach json license in licenses {
-//             json|error licId = license.value;
+    if(success){
+        foreach json license in licenses {
+            json|error licId = license.value;
 
-//             if(licId is int){
-//                 boolean insert = insertLibraryLicenseData(libId, licId);
-//                 if (!insert){
-//                     return false;
-//                 }
-//             }else{
-//                 log:printError("License Id is not an integer");
-//                 return false;
-//             }
-//         }
-//         return true;
-//     }
+            if(licId is int){
+                boolean insert = insertLibraryLicenseData(libId, licId);
+                if (!insert){
+                    return false;
+                }
+            }else{
+                log:printError("License Id is not an integer");
+                return false;
+            }
+        }
+        return true;
+    }
     
-//     return false;
-// }
+    return false;
+}
 
 
 // public isolated function addNewLibrary(string libName, string libType, json[] licenses) returns boolean {
@@ -198,19 +197,19 @@ public isolated function getAllLicense() returns json|error {
 //     return false;
 // }
 
-// public isolated function deleteLibraryLicense(int libId) returns boolean {
+public isolated function deleteLibraryLicense(int libId) returns boolean {
 
-//     sql:ParameterizedQuery query = `DELETE FROM LM_LIBRARY_LICENSE WHERE LIB_ID=${libId}`;    
-//     sql:ExecutionResult|sql:Error result = mysqlEp->execute(sqlQuery = query);
+    sql:ParameterizedQuery query = `DELETE FROM LM_LIBRARY_LICENSE WHERE LIB_ID=${libId}`;    
+    sql:ExecutionResult|sql:Error result = mysqlEp->execute(sqlQuery = query);
 
-//     if result is sql:ExecutionResult {
-//         return true;
-//     }else{
-//         log:printError("Error in deleting library licenses ", result);
-//         return false ;
-//     }
+    if result is sql:ExecutionResult {
+        return true;
+    }else{
+        log:printError("Error in deleting library licenses ", result);
+        return false ;
+    }
     
-// }
+}
 
 
 // public isolated  function checkPack(string packName) returns boolean? {
