@@ -1,9 +1,9 @@
 import ballerina/jballerina.java;
-import backendv2.java.lang as javalang;
-import backendv2.java.util as javautil;
-import backendv2.java.io as javaio;
-import backendv2.java.util.'stream as javautilstream;
-import backendv2.java.nio.charset as javaniocharset;
+import backend.java.lang as javalang;
+import backend.java.util as javautil;
+import backend.java.io as javaio;
+import backend.java.util.'stream as javautilstream;
+import backend.java.nio.charset as javaniocharset;
 
 # Ballerina class mapping for the Java `java.util.zip.ZipFile` class.
 @java:Binding {'class: "java.util.zip.ZipFile"}
@@ -899,4 +899,6 @@ function java_util_zip_ZipFile_newZipFile6(handle arg0, handle arg1) returns han
     'class: "java.util.zip.ZipFile",
     paramTypes: ["java.lang.String", "java.nio.charset.Charset"]
 } external;
+
+ernal;
 
