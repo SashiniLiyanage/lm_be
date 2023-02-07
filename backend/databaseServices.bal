@@ -70,21 +70,21 @@ public isolated function getVersion(handle product) returns handle = @java:Metho
     'class: "org.wso2.internal.apps.license.manager.TraversePack"
 } external;
 
-public isolated function getAllLicense() returns json|error {
+// public isolated function getAllLicense() returns json|error {
 
-    License[] license_list = [];
+//     License[] license_list = [];
 
-    sql:ParameterizedQuery query = `SELECT * FROM LM_License`;
+//     sql:ParameterizedQuery query = `SELECT * FROM LM_License`;
 
-    stream<License, error?> queryResponse = mysqlEp->query(query);
+//     stream<License, error?> queryResponse = mysqlEp->query(query);
 
-    check from License item in queryResponse
-        do {license_list.push(item);};
-    check queryResponse.close();
+//     check from License item in queryResponse
+//         do {license_list.push(item);};
+//     check queryResponse.close();
 
-    return license_list.toJson();
+//     return license_list.toJson();
 
-}
+// }
 
 
 public isolated function addNewLicense(string licName, string licKey, string licUrl,string licCategory) returns boolean {
@@ -119,45 +119,45 @@ public isolated  function getAllLibraries() returns json| error?{
 }
 
 
-public isolated function updateLicense(string licName, string licKey, string licUrl, string licCategory, int licId) returns boolean {
+// public isolated function updateLicense(string licName, string licKey, string licUrl, string licCategory, int licId) returns boolean {
     
-    sql:ParameterizedQuery query = `UPDATE LM_LICENSE SET LIC_NAME=${licName}, LIC_KEY=${licKey}, LIC_URL=${licUrl}, LIC_CATEGORY=${licCategory} WHERE LIC_ID=${licId}`;
+//     sql:ParameterizedQuery query = `UPDATE LM_LICENSE SET LIC_NAME=${licName}, LIC_KEY=${licKey}, LIC_URL=${licUrl}, LIC_CATEGORY=${licCategory} WHERE LIC_ID=${licId}`;
     
-    sql:ExecutionResult|sql:Error executionResult = mysqlEp->execute(sqlQuery = query);
+//     sql:ExecutionResult|sql:Error executionResult = mysqlEp->execute(sqlQuery = query);
 
-    if(executionResult is sql:ExecutionResult){
-        return true;
-    }else{
-        log:printError("Error in updating licenses", executionResult);
-        return false;
-    }
-}
+//     if(executionResult is sql:ExecutionResult){
+//         return true;
+//     }else{
+//         log:printError("Error in updating licenses", executionResult);
+//         return false;
+//     }
+// }
 
 
 
-public isolated function updateLibrary(json[] licenses, int libId) returns boolean {
+// public isolated function updateLibrary(json[] licenses, int libId) returns boolean {
 
-    boolean success = deleteLibraryLicense(libId);
+//     boolean success = deleteLibraryLicense(libId);
 
-    if(success){
-        foreach json license in licenses {
-            json|error licId = license.value;
+//     if(success){
+//         foreach json license in licenses {
+//             json|error licId = license.value;
 
-            if(licId is int){
-                boolean insert = insertLibraryLicenseData(libId, licId);
-                if (!insert){
-                    return false;
-                }
-            }else{
-                log:printError("License Id is not an integer");
-                return false;
-            }
-        }
-        return true;
-    }
+//             if(licId is int){
+//                 boolean insert = insertLibraryLicenseData(libId, licId);
+//                 if (!insert){
+//                     return false;
+//                 }
+//             }else{
+//                 log:printError("License Id is not an integer");
+//                 return false;
+//             }
+//         }
+//         return true;
+//     }
     
-    return false;
-}
+//     return false;
+// }
 
 
 public isolated function addNewLibrary(string libName, string libType, json[] licenses) returns boolean {
@@ -167,13 +167,13 @@ public isolated function addNewLibrary(string libName, string libType, json[] li
     string _name = "";
     string _version = "";
 
-    // string? nameVar = java:toString(getName(java:fromString(_filename)));
-    // string? versionVar = java:toString(getVersion(java:fromString(_filename)));
+    string? nameVar = java:toString(getName(java:fromString(_filename)));
+    string? versionVar = java:toString(getVersion(java:fromString(_filename)));
      
-    // if (nameVar is string && versionVar is string) {
-    //     _name = nameVar;
-    //     _version = versionVar;
-    // }
+    if (nameVar is string && versionVar is string) {
+        _name = nameVar;
+        _version = versionVar;
+    }
     
    
     int[] licenseID = [];
@@ -197,19 +197,19 @@ public isolated function addNewLibrary(string libName, string libType, json[] li
     return false;
 }
 
-public isolated function deleteLibraryLicense(int libId) returns boolean {
+// public isolated function deleteLibraryLicense(int libId) returns boolean {
 
-    sql:ParameterizedQuery query = `DELETE FROM LM_LIBRARY_LICENSE WHERE LIB_ID=${libId}`;    
-    sql:ExecutionResult|sql:Error result = mysqlEp->execute(sqlQuery = query);
+//     sql:ParameterizedQuery query = `DELETE FROM LM_LIBRARY_LICENSE WHERE LIB_ID=${libId}`;    
+//     sql:ExecutionResult|sql:Error result = mysqlEp->execute(sqlQuery = query);
 
-    if result is sql:ExecutionResult {
-        return true;
-    }else{
-        log:printError("Error in deleting library licenses ", result);
-        return false ;
-    }
+//     if result is sql:ExecutionResult {
+//         return true;
+//     }else{
+//         log:printError("Error in deleting library licenses ", result);
+//         return false ;
+//     }
     
-}
+// }
 
 
 // public isolated  function checkPack(string packName) returns boolean? {

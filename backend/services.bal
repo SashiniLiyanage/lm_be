@@ -146,30 +146,30 @@ service /LicenseManager on new http:Listener(9096) {
     // }
 
 
-    // resource function post addLibrary(@http:Payload json payload) returns Success|BadRequest|InternalServerError|error {
+    resource function post addLibrary(@http:Payload json payload) returns Success|BadRequest|InternalServerError|error {
 
-    //         json|error libName = payload.libFilename;
-    //         json|error libType = payload.libType;
-    //         json|error licenses = payload.libLicenseID;
+            json|error libName = payload.libFilename;
+            json|error libType = payload.libType;
+            json|error licenses = payload.libLicenseID;
             
-    //         if(libName is string && libType is string && licenses is json[]){
+            if(libName is string && libType is string && licenses is json[]){
 
-    //             boolean success = addNewLibrary(libName,libType,licenses);
+                boolean success = addNewLibrary(libName,libType,licenses);
 
-    //             if(success){
-    //                 Success res = {body: "Success"};
-    //                 return res;
-    //             }
+                if(success){
+                    Success res = {body: "Success"};
+                    return res;
+                }
 
-    //             InternalServerError res ={ body:"Server Error"};
-    //             return res;
+                InternalServerError res ={ body:"Server Error"};
+                return res;
 
-    //         }else{
-    //             BadRequest res ={ body:"Incorrect payload format"};
-    //             return res;   
-    //         }    
+            }else{
+                BadRequest res ={ body:"Incorrect payload format"};
+                return res;   
+            }    
     
-    // }
+    }
 
     // resource function get checkPack/[string packName]() returns Success|BadRequest|InternalServerError|error {
         
