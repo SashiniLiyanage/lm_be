@@ -83,30 +83,30 @@ service /LicenseManager on new http:Listener(9096) {
     
     }
 
-    // resource function post addLicense(@http:Payload json payload) returns Success|BadRequest|InternalServerError|error {
+    resource function post addLicense(@http:Payload json payload) returns Success|BadRequest|InternalServerError|error {
 
-    //         json|error licName = payload.licName;
-    //         json|error licUrl = payload.licUrl;
-    //         json|error licKey = payload.licKey;
-    //         json|error licCategory = payload.licCategory;
+            json|error licName = payload.licName;
+            json|error licUrl = payload.licUrl;
+            json|error licKey = payload.licKey;
+            json|error licCategory = payload.licCategory;
             
-    //         if(licName is string && licUrl is string && licKey is string && licCategory is string){
+            if(licName is string && licUrl is string && licKey is string && licCategory is string){
 
-    //             boolean success = addNewLicense(licName,licKey,licUrl,licCategory);
+                boolean success = addNewLicense(licName,licKey,licUrl,licCategory);
 
-    //             if(success){
-    //                 Success res = {body: "Success"};
-    //                 return res;
-    //             }
+                if(success){
+                    Success res = {body: "Success"};
+                    return res;
+                }
 
-    //             InternalServerError res ={ body:"Server Error"};
-    //             return res;
+                InternalServerError res ={ body:"Server Error"};
+                return res;
 
-    //         }else{
-    //             BadRequest res ={ body:"Incorrect payload format"};
-    //             return res;   
-    //         }    
-    // }
+            }else{
+                BadRequest res ={ body:"Incorrect payload format"};
+                return res;   
+            }    
+    }
 
 
     resource function get getLibrary() returns Success|InternalServerError|error {
