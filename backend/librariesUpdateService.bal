@@ -5,49 +5,49 @@ type LIB_ID record {|
     int LIB_ID;
 |};
 
-// public isolated function insertLibraryJson(json libraryData) returns int {
-// 	json|error  _name = libraryData.libName;
-//     json|error _version = libraryData.libVersion;
-//     json|error _filename = libraryData.libFilename;
-//     json|error _type = libraryData.libType;
-//     json|error _licenseID = libraryData.libLicenseID;
+public isolated function insertLibraryJson(json libraryData) returns int {
+	json|error  _name = libraryData.libName;
+    json|error _version = libraryData.libVersion;
+    json|error _filename = libraryData.libFilename;
+    json|error _type = libraryData.libType;
+    json|error _licenseID = libraryData.libLicenseID;
 
-//     int libraryID = 0;
+    int libraryID = 0;
 
-//     if (_licenseID is int[] && _name is string && _version is string && _filename is string && _type is string ) {
+    if (_licenseID is int[] && _name is string && _version is string && _filename is string && _type is string ) {
         
-//         libraryID = insertLibraryData(_name, _version, _filename, _type);
+        libraryID = insertLibraryData(_name, _version, _filename, _type);
 
-//         if (libraryID != 0) {
-//             foreach int id in _licenseID {
-//                 boolean success = insertLibraryLicenseData(libraryID, id);
-//                 if(!success){
-//                     return 0;
-//                 }
-//             }
-//         } else {
-//             log:printError("Error: Library does not exists: ");
-//         }
-//     } 
+        if (libraryID != 0) {
+            foreach int id in _licenseID {
+                boolean success = insertLibraryLicenseData(libraryID, id);
+                if(!success){
+                    return 0;
+                }
+            }
+        } else {
+            log:printError("Error: Library does not exists: ");
+        }
+    } 
 
-//     return libraryID;
-// }
+    return libraryID;
+}
 
-// public isolated function insertLibraryData(string lib_name, string lib_version, string lib_filename, string lib_type) returns int {
+public isolated function insertLibraryData(string lib_name, string lib_version, string lib_filename, string lib_type) returns int {
 
-//     int id = checkLibrary(lib_filename, lib_type);
+    int id = checkLibrary(lib_filename, lib_type);
 
-//     if id != 0 {
-//         return id;
-//     } else {
+    if id != 0 {
+        return id;
+    } else {
 
-//         sql:ParameterizedQuery query = `INSERT INTO LM_LIBRARY (LIB_NAME,LIB_VERSION, LIB_FILENAME, LIB_TYPE) VALUES (${lib_name},${lib_version},${lib_filename},${lib_type})`;
-//         sql:ExecutionResult|error executionResult = mysqlEp->execute(sqlQuery = query);
+        sql:ParameterizedQuery query = `INSERT INTO LM_LIBRARY (LIB_NAME,LIB_VERSION, LIB_FILENAME, LIB_TYPE) VALUES (${lib_name},${lib_version},${lib_filename},${lib_type})`;
+        sql:ExecutionResult|error executionResult = mysqlEp->execute(sqlQuery = query);
 
-//         return handleUpdate(executionResult, "Error in updating library table: ");
+        return handleUpdate(executionResult, "Error in updating library table: ");
            
-//     }
-// }
+    }
+}
 
 public isolated function insertLibraryLicenseData(int libId, int licId) returns boolean {
 
@@ -88,40 +88,40 @@ public isolated function checkLibraryLicense(int libId, int licId) returns boole
 
 }
 
-// isolated function checkLibrary(string libFilename, string libType) returns int {
-//     int libraryID = 0;
+isolated function checkLibrary(string libFilename, string libType) returns int {
+    int libraryID = 0;
 
-//     sql:ParameterizedQuery query = `SELECT LIB_ID FROM LM_LIBRARY WHERE LIB_FILENAME=${libFilename} AND LIB_TYPE=${libType}`;
-//     stream<LIB_ID, error?> queryResponse = mysqlEp->query(query);
+    sql:ParameterizedQuery query = `SELECT LIB_ID FROM LM_LIBRARY WHERE LIB_FILENAME=${libFilename} AND LIB_TYPE=${libType}`;
+    stream<LIB_ID, error?> queryResponse = mysqlEp->query(query);
 
-//     if(queryResponse is stream<LIB_ID>){
+    if(queryResponse is stream<LIB_ID>){
 
-//         LIB_ID[] lib_id_list = from LIB_ID item in queryResponse select item;
-//         if(lib_id_list.length()>0){
-//             libraryID = lib_id_list[0].LIB_ID;
-//         }
+        LIB_ID[] lib_id_list = from LIB_ID item in queryResponse select item;
+        if(lib_id_list.length()>0){
+            libraryID = lib_id_list[0].LIB_ID;
+        }
         
-//     } else {
-//         log:printError("Error in fetching from database: ");
-//     }
-//     return libraryID;
-// }
+    } else {
+        log:printError("Error in fetching from database: ");
+    }
+    return libraryID;
+}
 
 
-// isolated function handleUpdate(sql:ExecutionResult|error UpdateResult, string message) returns int {
+isolated function handleUpdate(sql:ExecutionResult|error UpdateResult, string message) returns int {
     
-//     if (UpdateResult is sql:ExecutionResult) {
+    if (UpdateResult is sql:ExecutionResult) {
 
-//         anydata|error generatedKey = UpdateResult.lastInsertId;
-//         if (generatedKey is int) {
-//             return generatedKey;
-//         }
+        anydata|error generatedKey = UpdateResult.lastInsertId;
+        if (generatedKey is int) {
+            return generatedKey;
+        }
 
-//     } else {
-//         log:printError(message, UpdateResult);
-//     }
-//     return 0;
-// }
+    } else {
+        log:printError(message, UpdateResult);
+    }
+    return 0;
+}
 
 // public isolated function updateDatabase(json dataSet) returns json|error {
 //     json | error libraries = dataSet.library;

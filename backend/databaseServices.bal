@@ -1,6 +1,6 @@
 import ballerinax/mysql.driver as _;
 import ballerina/sql;
-// import ballerina/jballerina.java;
+import ballerina/jballerina.java;
 import ballerina/log;
 // import ballerina/file;
 // import ballerina/io;
@@ -60,15 +60,15 @@ type Temporary record {|
     string BLOCKED;
 |};
 
-// public isolated function getName(handle product) returns handle = @java:Method {
-//     name: "getName",
-//     'class: "org.wso2.internal.apps.license.manager.TraversePack"
-// } external;
+public isolated function getName(handle product) returns handle = @java:Method {
+    name: "getName",
+    'class: "org.wso2.internal.apps.license.manager.TraversePack"
+} external;
 
-// public isolated function getVersion(handle product) returns handle = @java:Method {
-//     name: "getVersion",
-//     'class: "org.wso2.internal.apps.license.manager.TraversePack"
-// } external;
+public isolated function getVersion(handle product) returns handle = @java:Method {
+    name: "getVersion",
+    'class: "org.wso2.internal.apps.license.manager.TraversePack"
+} external;
 
 public isolated function getAllLicense() returns json|error {
 
@@ -160,42 +160,42 @@ public isolated function updateLibrary(json[] licenses, int libId) returns boole
 }
 
 
-// public isolated function addNewLibrary(string libName, string libType, json[] licenses) returns boolean {
+public isolated function addNewLibrary(string libName, string libType, json[] licenses) returns boolean {
 
-//     string _filename = libName;
-//     string _type = libType;
-//     string _name = "";
-//     string _version = "";
+    string _filename = libName;
+    string _type = libType;
+    string _name = "";
+    string _version = "";
 
-//     string? nameVar = java:toString(getName(java:fromString(_filename)));
-//     string? versionVar = java:toString(getVersion(java:fromString(_filename)));
+    string? nameVar = java:toString(getName(java:fromString(_filename)));
+    string? versionVar = java:toString(getVersion(java:fromString(_filename)));
      
-//     if (nameVar is string && versionVar is string) {
-//         _name = nameVar;
-//         _version = versionVar;
-//     }
+    if (nameVar is string && versionVar is string) {
+        _name = nameVar;
+        _version = versionVar;
+    }
     
    
-//     int[] licenseID = [];
-//     foreach json license in licenses {
-//         json|error value = license.value;
-//         if(value is int){
-//             licenseID.push(value);
-//         }else{
-//             log:printError("Error: Invalid licence id");
-//             return false;
-//         }
-//     }
+    int[] licenseID = [];
+    foreach json license in licenses {
+        json|error value = license.value;
+        if(value is int){
+            licenseID.push(value);
+        }else{
+            log:printError("Error: Invalid licence id");
+            return false;
+        }
+    }
 
-//     json data = {libName: _name, libVersion: _version, libFilename: _filename, libType: _type, libLicenseID: licenseID};
+    json data = {libName: _name, libVersion: _version, libFilename: _filename, libType: _type, libLicenseID: licenseID};
     
-//     int libraryID = insertLibraryJson(data);
-//     if libraryID != 0 {
-//         return true;
-//     }
+    int libraryID = insertLibraryJson(data);
+    if libraryID != 0 {
+        return true;
+    }
    
-//     return false;
-// }
+    return false;
+}
 
 public isolated function deleteLibraryLicense(int libId) returns boolean {
 
