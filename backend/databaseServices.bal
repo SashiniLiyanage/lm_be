@@ -1,6 +1,6 @@
 import ballerinax/mysql.driver as _;
 import ballerina/sql;
-// import ballerina/jballerina.java;
+import ballerina/jballerina.java;
 import ballerina/log;
 // import ballerina/file;
 // import ballerina/io;
@@ -60,15 +60,15 @@ type Temporary record {|
     string BLOCKED;
 |};
 
-// public isolated function getName(handle product) returns handle = @java:Method {
-//     name: "getName",
-//     'class: "org.wso2.internal.apps.license.manager.TraversePack"
-// } external;
+public isolated function getName(handle product) returns handle = @java:Method {
+    name: "getName",
+    'class: "org.wso2.internal.apps.license.manager.TraversePack"
+} external;
 
-// public isolated function getVersion(handle product) returns handle = @java:Method {
-//     name: "getVersion",
-//     'class: "org.wso2.internal.apps.license.manager.TraversePack"
-// } external;
+public isolated function getVersion(handle product) returns handle = @java:Method {
+    name: "getVersion",
+    'class: "org.wso2.internal.apps.license.manager.TraversePack"
+} external;
 
 public isolated function getAllLicense() returns json|error {
 
