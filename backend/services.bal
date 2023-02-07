@@ -108,7 +108,6 @@ service /LicenseManager on new http:Listener(9096) {
     //         }    
     // }
 
-
     resource function get getLibrary() returns Success|InternalServerError|error {
 
         json| error? returnedResponse = getAllLibraries();
