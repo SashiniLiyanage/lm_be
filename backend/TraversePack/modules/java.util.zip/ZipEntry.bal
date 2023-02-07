@@ -1027,5 +1027,3 @@ function java_util_zip_ZipEntry_newZipEntry2(handle arg0) returns handle = @java
     paramTypes: ["java.util.zip.ZipEntry"]
 } external;
 
-l;
-

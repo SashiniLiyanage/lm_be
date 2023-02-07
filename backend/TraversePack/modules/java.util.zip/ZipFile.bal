@@ -900,5 +900,3 @@ function java_util_zip_ZipFile_newZipFile6(handle arg0, handle arg1) returns han
     paramTypes: ["java.lang.String", "java.nio.charset.Charset"]
 } external;
 
-ernal;
-

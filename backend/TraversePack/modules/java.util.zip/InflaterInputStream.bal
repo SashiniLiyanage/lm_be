@@ -450,5 +450,3 @@ function java_util_zip_InflaterInputStream_newInflaterInputStream3(handle arg0, 
     paramTypes: ["java.io.InputStream", "java.util.zip.Inflater", "int"]
 } external;
 
-
-

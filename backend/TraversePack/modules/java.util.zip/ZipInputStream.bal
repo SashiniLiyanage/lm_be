@@ -951,5 +951,3 @@ function java_util_zip_ZipInputStream_newZipInputStream2(handle arg0, handle arg
     paramTypes: ["java.io.InputStream", "java.nio.charset.Charset"]
 } external;
 
-l;
-

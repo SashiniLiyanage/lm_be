@@ -7,8 +7,6 @@ name = "backend"
 version = "0.1.0"
 distribution = "2201.3.1"
 
-
-
 [[platform.java11.dependency]]
 groupId = "TraversePack"
 artifactId = "TraversePack"
@@ -20,20 +18,26 @@ groupId = "com.googlecode.json-simple"
 artifactId = "json-simple"
 version = "1.1.1"
 
-# transitive dependency of com.googlecode.json-simple:json-simple:1.1.1
-[[platform.java11.dependency]]
-groupId = "junit"
-artifactId = "junit"
-version = "4.10"
-
-# transitive dependency of com.googlecode.json-simple:json-simple:1.1.1
-[[platform.java11.dependency]]
-groupId = "org.hamcrest"
-artifactId = "hamcrest-core"
-version = "1.1"
-
 # transitive dependency of TraversePack:TraversePack:1.0-SNAPSHOT
 [[platform.java11.dependency]]
 groupId = "commons-io"
 artifactId = "commons-io"
 version = "2.5"
+
+# transitive dependency of TraversePack:TraversePack:1.0-SNAPSHOT
+[[platform.java11.dependency]]
+groupId = "org.hamcrest"
+artifactId = "hamcrest-core"
+version = "2.2"
+
+# transitive dependency of org.hamcrest:hamcrest-core:2.2
+[[platform.java11.dependency]]
+groupId = "org.hamcrest"
+artifactId = "hamcrest"
+version = "2.2"
+
+# transitive dependency of TraversePack:TraversePack:1.0-SNAPSHOT
+[[platform.java11.dependency]]
+groupId = "junit"
+artifactId = "junit"
+version = "4.13.2"
