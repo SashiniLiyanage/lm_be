@@ -1,6 +1,6 @@
 import ballerinax/mysql.driver as _;
 import ballerina/sql;
-import ballerina/jballerina.java;
+// import ballerina/jballerina.java;
 import ballerina/log;
 // import ballerina/file;
 // import ballerina/io;
@@ -60,15 +60,15 @@ type Temporary record {|
     string BLOCKED;
 |};
 
-public isolated function getName(handle product) returns handle = @java:Method {
-    name: "getName",
-    'class: "org.wso2.internal.apps.license.manager.TraversePack"
-} external;
+// public isolated function getName(handle product) returns handle = @java:Method {
+//     name: "getName",
+//     'class: "org.wso2.internal.apps.license.manager.TraversePack"
+// } external;
 
-public isolated function getVersion(handle product) returns handle = @java:Method {
-    name: "getVersion",
-    'class: "org.wso2.internal.apps.license.manager.TraversePack"
-} external;
+// public isolated function getVersion(handle product) returns handle = @java:Method {
+//     name: "getVersion",
+//     'class: "org.wso2.internal.apps.license.manager.TraversePack"
+// } external;
 
 public isolated function getAllLicense() returns json|error {
 
@@ -167,13 +167,13 @@ public isolated function addNewLibrary(string libName, string libType, json[] li
     string _name = "";
     string _version = "";
 
-    string? nameVar = java:toString(getName(java:fromString(_filename)));
-    string? versionVar = java:toString(getVersion(java:fromString(_filename)));
+    // string? nameVar = java:toString(getName(java:fromString(_filename)));
+    // string? versionVar = java:toString(getVersion(java:fromString(_filename)));
      
-    if (nameVar is string && versionVar is string) {
-        _name = nameVar;
-        _version = versionVar;
-    }
+    // if (nameVar is string && versionVar is string) {
+    //     _name = nameVar;
+    //     _version = versionVar;
+    // }
     
    
     int[] licenseID = [];
