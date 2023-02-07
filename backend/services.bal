@@ -122,29 +122,29 @@ service /LicenseManager on new http:Listener(9096) {
         }
     }
 
-    // resource function post updateLibrary(@http:Payload json payload) returns Success|InternalServerError|BadRequest|error {
+    resource function post updateLibrary(@http:Payload json payload) returns Success|InternalServerError|BadRequest|error {
 
-    //         json|error licenses = payload.ids;
-    //         json|error libId = payload.libId;
+            json|error licenses = payload.ids;
+            json|error libId = payload.libId;
             
-    //         if(libId is int && licenses is json[]){
-    //             boolean success = updateLibrary(licenses,libId);
+            if(libId is int && licenses is json[]){
+                boolean success = updateLibrary(licenses,libId);
 
-    //             if(success){
-    //                 Success res ={ body: "Success"};
-    //                 return res; 
-    //             }
+                if(success){
+                    Success res ={ body: "Success"};
+                    return res; 
+                }
 
-    //             InternalServerError res ={ body: ()};
-    //             return res;
+                InternalServerError res ={ body: ()};
+                return res;
 
-    //         }else{
-    //             BadRequest res ={ body: "Incorrect payload format"};
-    //             return res;   
-    //         }
+            }else{
+                BadRequest res ={ body: "Incorrect payload format"};
+                return res;   
+            }
 
        
-    // }
+    }
 
 
     // resource function post addLibrary(@http:Payload json payload) returns Success|BadRequest|InternalServerError|error {
