@@ -44,18 +44,15 @@ service /LicenseManager on new http:Listener(9096) {
 
     resource function get getLicense() returns Success|InternalServerError|error {
 
-        // json|error returnedResponse = getAllLicense();
-        json returnedResponse = {name: "jhon"};
+        json|error returnedResponse = getAllLicense();
         
-        // if returnedResponse is json {
-        //     Success res = {body: returnedResponse};
-        //     return res;
-        // }
-
-        // InternalServerError res ={ body: "Server Error"};
-        // return res;
+        if returnedResponse is json {
             Success res = {body: returnedResponse};
             return res;
+        }
+
+        InternalServerError res ={ body: "Server Error"};
+        return res;
         }
     
 

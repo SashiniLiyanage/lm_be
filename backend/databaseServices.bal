@@ -1,5 +1,5 @@
-// import ballerinax/mysql.driver as _;
-// import ballerina/sql;
+import ballerinax/mysql.driver as _;
+import ballerina/sql;
 // import ballerina/jballerina.java;
 // import ballerina/log;
 // import ballerina/file;
@@ -71,21 +71,21 @@ type Temporary record {|
 //     'class: "org.wso2.internal.apps.license.manager.TraversePack"
 // } external;
 
-// public isolated function getAllLicense() returns json|error {
+public isolated function getAllLicense() returns json|error {
 
-//     License[] license_list = [];
+    License[] license_list = [];
 
-//     sql:ParameterizedQuery query = `SELECT * FROM LM_License`;
+    sql:ParameterizedQuery query = `SELECT * FROM LM_License`;
 
-//     stream<License, error?> queryResponse = mysqlEp->query(query);
+    stream<License, error?> queryResponse = mysqlEp->query(query);
 
-//     check from License item in queryResponse
-//         do {license_list.push(item);};
-//     check queryResponse.close();
+    check from License item in queryResponse
+        do {license_list.push(item);};
+    check queryResponse.close();
 
-//     return license_list.toJson();
+    return license_list.toJson();
 
-// }
+}
 
 
 // public isolated function addNewLicense(string licName, string licKey, string licUrl,string licCategory) returns boolean {
