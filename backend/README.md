@@ -26,4 +26,5 @@ Navigate to the TraversePack directory and issue the following commands:
 
 To run the module, navigate to the root directory of ballerina project and issue the following command:  
 
-`bal run`   
+`bal build`   
+`bal run .\target\bin\backend.jar`  
