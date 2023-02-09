@@ -1,7 +1,7 @@
 import ballerina/jballerina.java;
-import backend.java.lang as javalang;
-import backend.java.util as javautil;
-import backend.java.util.'function as javautilfunction;
+import backendv2.java.lang as javalang;
+import backendv2.java.util as javautil;
+import backendv2.java.util.'function as javautilfunction;
 
 # Ballerina class mapping for the Java `java.util.jar.Attributes` class.
 @java:Binding {'class: "java.util.jar.Attributes"}

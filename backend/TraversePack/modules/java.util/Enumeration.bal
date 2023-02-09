@@ -1,5 +1,5 @@
 import ballerina/jballerina.java;
-import backend.java.lang as javalang;
+import backendv2.java.lang as javalang;
 
 # Ballerina class mapping for the Java `java.util.Enumeration` interface.
 @java:Binding {'class: "java.util.Enumeration"}

@@ -1,8 +1,8 @@
 import ballerina/jballerina.java;
 import ballerina/jballerina.java.arrays as jarrays;
-import backend.java.lang as javalang;
-import backend.java.time as javatime;
-import backend.java.nio.file.attribute as javaniofileattribute;
+import backendv2.java.lang as javalang;
+import backendv2.java.time as javatime;
+import backendv2.java.nio.file.attribute as javaniofileattribute;
 
 # Ballerina class mapping for the Java `java.util.zip.ZipEntry` class.
 @java:Binding {'class: "java.util.zip.ZipEntry"}

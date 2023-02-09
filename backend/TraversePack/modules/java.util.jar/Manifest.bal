@@ -1,7 +1,7 @@
 import ballerina/jballerina.java;
-import backend.java.lang as javalang;
-import backend.java.util as javautil;
-import backend.java.io as javaio;
+import backendv2.java.lang as javalang;
+import backendv2.java.util as javautil;
+import backendv2.java.io as javaio;
 
 # Ballerina class mapping for the Java `java.util.jar.Manifest` class.
 @java:Binding {'class: "java.util.jar.Manifest"}

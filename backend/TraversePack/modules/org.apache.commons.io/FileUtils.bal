@@ -1,13 +1,13 @@
 import ballerina/jballerina.java;
 import ballerina/jballerina.java.arrays as jarrays;
-import backend.java.lang as javalang;
-import backend.java.util as javautil;
-import backend.java.net as javanet;
-import backend.java.io as javaio;
-import backend.java.math as javamath;
-import backend.java.util.zip as javautilzip;
-import backend.org.apache.commons.io.filefilter as orgapachecommonsiofilefilter;
-import backend.java.nio.charset as javaniocharset;
+import backendv2.java.lang as javalang;
+import backendv2.java.util as javautil;
+import backendv2.java.net as javanet;
+import backendv2.java.io as javaio;
+import backendv2.java.math as javamath;
+import backendv2.java.util.zip as javautilzip;
+import backendv2.org.apache.commons.io.filefilter as orgapachecommonsiofilefilter;
+import backendv2.java.nio.charset as javaniocharset;
 
 # Ballerina class mapping for the Java `org.apache.commons.io.FileUtils` class.
 @java:Binding {'class: "org.apache.commons.io.FileUtils"}

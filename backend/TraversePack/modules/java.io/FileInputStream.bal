@@ -1,7 +1,7 @@
 import ballerina/jballerina.java;
 import ballerina/jballerina.java.arrays as jarrays;
-import backend.java.lang as javalang;
-import backend.java.nio.channels as javaniochannels;
+import backendv2.java.lang as javalang;
+import backendv2.java.nio.channels as javaniochannels;
 
 # Ballerina class mapping for the Java `java.io.FileInputStream` class.
 @java:Binding {'class: "java.io.FileInputStream"}

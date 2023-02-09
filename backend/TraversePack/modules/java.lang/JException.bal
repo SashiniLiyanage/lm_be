@@ -1,6 +1,6 @@
 import ballerina/jballerina.java;
 import ballerina/jballerina.java.arrays as jarrays;
-import backend.java.io as javaio;
+import backendv2.java.io as javaio;
 
 # Ballerina class mapping for the Java `java.lang.Exception` class.
 @java:Binding {'class: "java.lang.Exception"}

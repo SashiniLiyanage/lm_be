@@ -1,6 +1,6 @@
 import ballerina/jballerina.java;
 import ballerina/jballerina.java.arrays as jarrays;
-import backend.java.lang as javalang;
+import backendv2.java.lang as javalang;
 
 # Ballerina class mapping for the Java `java.io.BufferedOutputStream` class.
 @java:Binding {'class: "java.io.BufferedOutputStream"}

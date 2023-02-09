@@ -1,8 +1,8 @@
 import ballerina/jballerina.java;
 import ballerina/jballerina.java.arrays as jarrays;
-import backend.java.lang as javalang;
-import backend.java.util.'stream as javautilstream;
-import backend.java.util.'function as javautilfunction;
+import backendv2.java.lang as javalang;
+import backendv2.java.util.'stream as javautilstream;
+import backendv2.java.util.'function as javautilfunction;
 
 # Ballerina class mapping for the Java `java.util.AbstractList` class.
 @java:Binding {'class: "java.util.AbstractList"}

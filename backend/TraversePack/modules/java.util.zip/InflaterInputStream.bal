@@ -1,7 +1,7 @@
 import ballerina/jballerina.java;
 import ballerina/jballerina.java.arrays as jarrays;
-import backend.java.lang as javalang;
-import backend.java.io as javaio;
+import backendv2.java.lang as javalang;
+import backendv2.java.io as javaio;
 
 # Ballerina class mapping for the Java `java.util.zip.InflaterInputStream` class.
 @java:Binding {'class: "java.util.zip.InflaterInputStream"}
