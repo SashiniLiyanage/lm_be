@@ -32,6 +32,14 @@ dependencies = [
 
 [[package]]
 org = "ballerina"
+name = "cloud"
+version = "2.4.2"
+modules = [
+	{org = "ballerina", packageName = "cloud", moduleName = "cloud"}
+]
+
+[[package]]
+org = "ballerina"
 name = "constraint"
 version = "1.0.2"
 dependencies = [
@@ -280,7 +288,7 @@ dependencies = [
 [[package]]
 org = "ballerina"
 name = "sql"
-version = "1.6.1"
+version = "1.6.2"
 dependencies = [
 	{org = "ballerina", name = "io"},
 	{org = "ballerina", name = "jballerina.java"},
@@ -331,7 +339,7 @@ modules = [
 [[package]]
 org = "ballerinax"
 name = "mysql"
-version = "1.6.1"
+version = "1.6.2"
 dependencies = [
 	{org = "ballerina", name = "crypto"},
 	{org = "ballerina", name = "io"},
@@ -356,6 +364,7 @@ org = "wso2"
 name = "backendv2"
 version = "0.1.0"
 dependencies = [
+	{org = "ballerina", name = "cloud"},
 	{org = "ballerina", name = "email"},
 	{org = "ballerina", name = "file"},
 	{org = "ballerina", name = "http"},
