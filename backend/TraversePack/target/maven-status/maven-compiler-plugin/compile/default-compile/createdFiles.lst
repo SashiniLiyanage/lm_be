@@ -1,0 +1,3 @@
+org\wso2\internal\apps\license\manager\LicenseManagerUtils.class
+org\wso2\internal\apps\license\manager\TraversePack.class
+org\wso2\internal\apps\license\manager\LicenseTxtUtils.class
