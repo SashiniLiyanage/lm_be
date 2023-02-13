@@ -1,5 +1,5 @@
 # Auto Generated Dockerfile
-FROM 10014/jvm-runtime:1.0
+FROM ballerina/jvm-runtime:1.0
 
 LABEL maintainer="dev@ballerina.io"
 COPY auth-native-2.5.0.jar /home/10014/jars/ 
